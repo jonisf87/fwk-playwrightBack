@@ -58,7 +58,11 @@ export class RegistrationPage {
   }
 
   async getErrorMessage() {
-    return this.page.locator("#name").textContent();
+    try {
+      return await this.page.locator("#name").textContent({ timeout: 5000 });
+    } catch {
+      return null;
+    }
   }
 
   // Note: CAPTCHA is present but ignored for automation

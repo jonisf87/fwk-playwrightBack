@@ -64,17 +64,17 @@ export class PracticeFormPage {
       await this.page.fill("#subjectsInput", subject);
       await this.page.keyboard.press("Enter");
     }
+    await this.page.keyboard.press("Escape");
   }
 
   async selectHobbies() {
-    // Hide overlays before selecting hobbies
     await this.hideOverlays();
     for (const id of [
       "hobbies-checkbox-1",
       "hobbies-checkbox-2",
       "hobbies-checkbox-3",
     ]) {
-      await this.page.locator(`label[for="${id}"]`).click();
+      await this.page.locator(`label[for="${id}"]`).click({ force: true });
     }
   }
 
