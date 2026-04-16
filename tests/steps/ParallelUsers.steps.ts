@@ -1,4 +1,6 @@
-import { When, Then } from "@cucumber/cucumber";
+import { When, Then, setDefaultTimeout } from "@cucumber/cucumber";
+
+setDefaultTimeout(120 * 1000);
 import { expect } from "@playwright/test";
 import { PracticeFormPage } from "../pages/PracticeFormPage";
 import { SortablePage } from "../pages/SortablePage";

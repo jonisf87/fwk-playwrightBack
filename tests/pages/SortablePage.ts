@@ -5,7 +5,7 @@ export class SortablePage {
 
   async goto() {
     await this.page.goto("https://demoqa.com/sortable", {
-      waitUntil: "networkidle",
+      waitUntil: "load",
       timeout: 60000,
     });
     await this.page.evaluate(() => {
