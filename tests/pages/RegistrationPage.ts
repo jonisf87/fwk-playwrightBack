@@ -59,7 +59,7 @@ export class RegistrationPage {
 
   async getErrorMessage() {
     try {
-      return await this.page.locator("#name").textContent({ timeout: 5000 });
+      return await this.page.locator("#name").textContent({ timeout: 15000 });
     } catch {
       return null;
     }

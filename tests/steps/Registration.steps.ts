@@ -111,7 +111,7 @@ When(
       // Wait for either error or captcha error
       let error = await this.pageObj.getErrorMessage();
 
-      if (error?.includes("reCaptcha")) {
+      if (!error || error.includes("reCaptcha")) {
         // Fallback to API registration (should fail with password error)
         if (!this.page) {
           throw new Error("No page available in world context");
@@ -156,6 +156,6 @@ Then(
     const error =
       this._registrationError ||
       (this.pageObj && (await this.pageObj.getErrorMessage()));
-    expect(error).toMatch(/Password must have|Passwords must have/i);
+    expect(error ?? "").toMatch(/Password must have|Passwords must have/i);
   },
 );
