@@ -1,18 +1,18 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   use: {
     headless: true,
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    baseURL: 'https://demoqa.com',
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
+    baseURL: "https://demoqa.com",
   },
-  reporter: [['list'], ['html']],
+  reporter: [["list"], ["html"]],
   projects: [
     {
-      name: 'chromium',
-      use: { browserName: 'chromium' },
+      name: "chromium",
+      use: { browserName: "chromium" },
     },
   ],
 });

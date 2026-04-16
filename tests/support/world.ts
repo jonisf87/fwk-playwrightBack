@@ -1,11 +1,24 @@
+import {
+  setWorldConstructor,
+  World,
+  IWorldOptions,
+  Before,
+  After,
+  ITestCaseHookParameter,
+} from "@cucumber/cucumber";
+import {
+  Browser,
+  BrowserContext,
+  Page,
+  chromium,
+  firefox,
+  webkit,
+  request,
+  APIRequestContext,
+} from "@playwright/test";
 
-import { setWorldConstructor, World, IWorldOptions, Before, After, ITestCaseHookParameter } from '@cucumber/cucumber';
-import { Browser, BrowserContext, Page, chromium, firefox, webkit, request, APIRequestContext } from '@playwright/test';
-
-
-import type { RegistrationPage } from '../pages/RegistrationPage';
-import type { LoginPage } from '../pages/LoginPage';
-
+import type { RegistrationPage } from "../pages/RegistrationPage";
+import type { LoginPage } from "../pages/LoginPage";
 
 export class CustomWorld extends World {
   browser?: Browser;
@@ -19,31 +32,35 @@ export class CustomWorld extends World {
 
   // API test state
   apiUser?: { userName: string; password: string };
-  apiResponse?: import('@playwright/test').APIResponse;
+  apiResponse?: import("@playwright/test").APIResponse;
   apiResponseBody?: unknown;
   apiToken?: string;
   apiUserId?: string;
 
+  // Parallel user test state
+  formConfirmation?: boolean;
+  gridOrderChanged?: boolean;
+  emailError?: boolean;
+
   constructor(options: IWorldOptions) {
     super(options);
   }
-
 
   async init(isApi: boolean) {
     if (isApi) {
       this.apiRequestContext = await request.newContext();
     } else {
       // Select browser based on BROWSER env variable (default to chromium)
-      let browserType = (process.env.BROWSER || 'chromium').toLowerCase();
+      let browserType = (process.env.BROWSER || "chromium").toLowerCase();
       let browserLauncher;
       switch (browserType) {
-        case 'firefox':
+        case "firefox":
           browserLauncher = firefox;
           break;
-        case 'webkit':
+        case "webkit":
           browserLauncher = webkit;
           break;
-        case 'chromium':
+        case "chromium":
         default:
           browserLauncher = chromium;
       }
@@ -64,19 +81,16 @@ export class CustomWorld extends World {
   }
 }
 
-
 setWorldConstructor(CustomWorld);
-
 
 // Hooks
 
-
 Before(async function (this: CustomWorld, scenario: ITestCaseHookParameter) {
-  const isApi = scenario.pickle.tags.some(tag => tag.name === '@api');
+  const isApi = scenario.pickle.tags.some((tag) => tag.name === "@api");
   await this.init(isApi);
 });
 
 After(async function (this: CustomWorld, scenario: ITestCaseHookParameter) {
-  const isApi = scenario.pickle.tags.some(tag => tag.name === '@api');
+  const isApi = scenario.pickle.tags.some((tag) => tag.name === "@api");
   await this.close(isApi);
 });

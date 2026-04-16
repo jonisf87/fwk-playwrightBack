@@ -4,7 +4,7 @@
   "description": "E2E Playwright + Cucumber + TypeScript + POM for demoqa.com/register",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js tests/features/**/*.feature --require-module ts-node/register --require tests/**/*.ts --require tests/steps/ParallelUsers.steps.ts",
+    "test": "cucumber-js \"tests/features/**/*.feature\" --require-module ts-node/register --require \"tests/**/*.ts\"",
     "codegen": "playwright codegen https://demoqa.com/register"
   },
   "author": "",
