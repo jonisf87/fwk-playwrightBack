@@ -13,7 +13,10 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto("https://demoqa.com/login");
+    await this.page.goto("https://demoqa.com/login", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000,
+    });
   }
 
   async login(username: string, password: string) {
