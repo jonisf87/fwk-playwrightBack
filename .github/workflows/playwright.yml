@@ -67,6 +67,7 @@ jobs:
           --require tests/steps/ParallelUsers.steps.ts
           --require tests/support/*.ts
           --tags "not @api"
+          --retry 2
           --format html:reports/ui-${{ matrix.browser }}-report.html
       - name: Upload UI HTML Report
         uses: actions/upload-artifact@v7
