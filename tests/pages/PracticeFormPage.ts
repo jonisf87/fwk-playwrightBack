@@ -25,7 +25,10 @@ export class PracticeFormPage {
   }
 
   async goto() {
-    await this.page.goto("https://demoqa.com/automation-practice-form");
+    await this.page.goto("https://demoqa.com/automation-practice-form", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000,
+    });
   }
 
   async fillFirstName(value: string) {

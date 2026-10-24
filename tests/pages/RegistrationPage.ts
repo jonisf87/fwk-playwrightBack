@@ -4,7 +4,10 @@ export class RegistrationPage {
   constructor(private page: Page) {}
 
   async goto() {
-    await this.page.goto("https://demoqa.com/register");
+    await this.page.goto("https://demoqa.com/register", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000,
+    });
   }
 
   private async waitAndFill(selector: string, value: string) {

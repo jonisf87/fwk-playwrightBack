@@ -47,7 +47,7 @@ When(
       password = data.password;
     } else {
       userName =
-        faker.internet.userName().replace(/[^a-zA-Z0-9]/g, "") + Date.now();
+        faker.internet.username().replace(/[^a-zA-Z0-9]/g, "") + Date.now();
       password = generateValidPassword();
       fs.writeFileSync(
         dataPath,
@@ -93,7 +93,7 @@ When(
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
     const userName =
-      faker.internet.userName().replace(/[^a-zA-Z0-9]/g, "") + Date.now();
+      faker.internet.username().replace(/[^a-zA-Z0-9]/g, "") + Date.now();
     const password = generateInvalidPassword();
 
     this.credentials = { userName, password };

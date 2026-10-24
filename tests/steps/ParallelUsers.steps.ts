@@ -109,7 +109,7 @@ When(
       } catch {
         // Fallback to API registration (should fail with password error)
         const userName =
-          faker.internet.userName().replace(/[^a-zA-Z0-9]/g, "") + Date.now();
+          faker.internet.username().replace(/[^a-zA-Z0-9]/g, "") + Date.now();
         const password = "password1!"; // invalid password
         const response = await page.request.post(
           "https://demoqa.com/Account/v1/User",
