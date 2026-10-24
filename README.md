@@ -1,5 +1,12 @@
 # Playwright + Cucumber + TypeScript E2E Demo
 
+[![Playwright E2E & API Tests](https://github.com/jonisf87/fwk-playwrightBack/actions/workflows/playwright.yml/badge.svg)](https://github.com/jonisf87/fwk-playwrightBack/actions/workflows/playwright.yml)
+![Playwright](https://img.shields.io/badge/Playwright-1.64-2EAD33?logo=playwright&logoColor=white)
+![Cucumber](https://img.shields.io/badge/Cucumber.js-13-23D96C?logo=cucumber&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)
+![Node](https://img.shields.io/badge/Node-%E2%89%A522-339933?logo=node.js&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 Automated end-to-end and API tests for [demoqa.com](https://demoqa.com) using Playwright, Cucumber (Gherkin), TypeScript, and the Page Object Model (POM) pattern.
 
 Flows covered:
@@ -22,6 +29,8 @@ tests/
 
 ## Getting Started
 
+Requirements: Node.js 22 or newer (CI runs on Node 24).
+
 1. Install dependencies:
 
    ```sh
@@ -31,7 +40,7 @@ tests/
 2. Install Playwright browsers:
 
    ```sh
-   npx playwright install
+   npx playwright install --with-deps
    ```
 
 3. Run all tests:
@@ -101,10 +110,11 @@ Reports are available for download from the GitHub Actions run summary.
 
 ## Tech Stack
 
-- [Playwright](https://playwright.dev/)
-- [Cucumber.js](https://github.com/cucumber/cucumber-js)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Faker](https://fakerjs.dev/)
+- [Playwright](https://playwright.dev/) 1.64
+- [Cucumber.js](https://github.com/cucumber/cucumber-js) 13
+- [TypeScript](https://www.typescriptlang.org/) 6.0 (capped below 6.1 by typescript-eslint's peer range)
+- [Faker](https://fakerjs.dev/) 10
+- [ESLint](https://eslint.org/) 10 + typescript-eslint 8
 
 ## Notes
 

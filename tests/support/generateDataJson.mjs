@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import { writeFileSync } from 'fs';
 
 const data = {
-  userName: faker.internet.userName(),
+  userName: faker.internet.username(),
   password: faker.internet.password(10, true, /[A-Za-z0-9]/, 'a1!A')
 };
 
