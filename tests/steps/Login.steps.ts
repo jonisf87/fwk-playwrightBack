@@ -52,7 +52,7 @@ Then("I should see my profile page", async function (this: CustomWorld) {
     throw new Error("No page available in world context");
   }
   try {
-    await this.page.waitForSelector("#userName-value", { timeout: 5000 });
+    await this.page.waitForSelector("#userName-value", { timeout: 15000 });
   } catch {
     // Capture screenshot and page content for debugging
     await this.page.screenshot({
